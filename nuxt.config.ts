@@ -5,6 +5,7 @@ const conf = fs.readFileSync(`./config/conf.toml`, "utf8");
 const tomlData = toml.parse(conf);
 
 export default defineNuxtConfig({
+  title: 'Frp in UI',
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [

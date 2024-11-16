@@ -46,6 +46,7 @@ const status = ref(0);
 const update = ref(0);
 const loading = ref(true);
 const restart = async () => {
+    MessagePlugin.loading('若无响应，请刷新页面查看最新状态');
     try {
         const res = await $fetch('/api/command/restart');
         if (res.code === 200) {
