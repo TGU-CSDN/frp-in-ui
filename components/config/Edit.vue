@@ -8,10 +8,10 @@
                 <t-input v-model="formData.localIP" />
             </t-form-item>
             <t-form-item label="内网端口">
-                <t-input v-model="formData.localPort" />
+                <t-input v-model="formData.localPort" type="number" />
             </t-form-item>
             <t-form-item label="远程端口">
-                <t-input v-model="formData.remotePort" />
+                <t-input v-model="formData.remotePort" type="number" />
             </t-form-item>
         </t-form>
     </div>

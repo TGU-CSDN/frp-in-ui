@@ -1,6 +1,7 @@
 import shell from "shelljs";
 import os from "node:os";
 import { readFile, copyFile } from 'node:fs/promises';
+import { compareMd5 } from '../../utils/index';
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
@@ -17,12 +18,14 @@ export default defineEventHandler(async (event) => {
   const { frpPath } = config;
   const res = await shell.exec(command);
   // -1: 未重启应用配置文件, null: 无应用配置文件, 1: 已应用
-  const compare = await compareFiles(`${frpPath}/frpc.toml`, `${frpPath}/frpc-copy.toml`);
+  // const compare = await compareFiles(`${frpPath}/frpc.toml`, `${frpPath}/frpc-copy.toml`);
+  const compare = compareMd5(`${frpPath}/frpc.toml`, `${frpPath}/frpc-copy.toml`)
+
   return {
     code: 200,
     data: {
         service: res.code,
-        update: compare
+        update: compare ? 1 : -1
     },
   };
 });

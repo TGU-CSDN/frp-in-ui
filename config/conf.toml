@@ -1,2 +1,2 @@
-frpPath = 'D:/frp_0.52.3_windows_amd64'
+frpPath = '/usr/local/frp'
 port = 7000
