@@ -46,13 +46,19 @@ const status = ref(0);
 const update = ref(0);
 const loading = ref(true);
 const restart = async () => {
-    const res = await $fetch('/api/command/restart');
-    if (res.code === 200) {
-        MessagePlugin.success('重启并应用成功');
-    } else {
-        MessagePlugin.warning(res.msg);
+    try {
+        const res = await $fetch('/api/command/restart');
+        if (res.code === 200) {
+            MessagePlugin.success('重启并应用成功');
+        } else {
+            MessagePlugin.warning(res.msg);
+        }
+        getStatus();
+    } catch (err) {
+        setTimeout(() => {
+            getStatus();
+        }, 500);
     }
-    getStatus();
 }
 onMounted(() => {
     getStatus();
