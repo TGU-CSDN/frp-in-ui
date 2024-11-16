@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+.page-title {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+    padding: 1rem;
+    background-color: #fff;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.page-content {
+    margin: 1rem;
+    padding: 2rem;
+    background-color: #fff;
+    
+}
